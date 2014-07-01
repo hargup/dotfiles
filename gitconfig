@@ -1,0 +1,99 @@
+# Forked form Vivek Rai(vivekraiiitkgp@gmail.com)
+# http://github.com/vivekraiiitkgp
+[core]
+whitespace = trailing-space,space-before-tab
+    editor = vim
+[apply]
+whitespace = fix
+[github]
+user = hargup
+[format]
+signoff = true
+coverLetter = auto
+[color]
+ui = auto
+[push]
+default = current
+[pretty]
+lg = format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset'
+[alias]
+l = log
+lf = log --follow
+sl = shortlog -ns --no-merges
+s = status -sb
+sh = show
+c = clone
+co = checkout
+cob = checkout -b
+ci = commit
+cp = cherry-pick
+fp = format-patch -M -C -o outgoing
+fpo = format-patch --stdout -M -C
+se = send-email
+graph = log --graph --decorate --pretty=oneline --abbrev-commit
+review = log -p --reverse master..
+r = reset
+rh = reset --hard
+re = rebase
+ri = rebase --interactive
+rc = rebase --continue
+ra = rebase --abort
+rs = rebase --skip
+ss = stash save
+sp = stash pop
+sd = stash drop
+sc = stash clear
+p = push
+pf = push -f
+f = fetch
+pu = pull
+b = blame -M -CCC
+bD = branch -D
+bM = branch -M
+br = branch -v -v
+bra = branch -a
+test-ri = !GIT_EDITOR='sed -i /^pick/agit-prove' git ri
+m = merge
+mu = merge --ff-only @{u}
+fb = filter-branch
+rp = rev-parse
+rems = remote show -n
+rema = remote add
+remr = remote rm
+remp = remote prune
+remn = rename rename
+su = remote set-url
+d = diff
+[pull]
+rebase = true
+[merge]
+conflictstyle = diff3
+log = 10
+[rerere]
+enabled = true
+[rebase]
+autosquash = true
+autostash = true
+[diff]
+submodule = log
+[grep]
+lineNumber = true
+[advice]
+pushUpdateRejected = true
+statusHints = false
+commitBeforeMerge = true
+resolveConflict = true
+implicitIdentity = false
+detachedHead = false
+amWorkDir = false
+[credential]
+helper = cache --timeout 36000
+[url "git@github.com:hargup/"]
+insteadOf = gh:vivekiitkgp/
+[url "git://github.com/"]
+insteadOf = gh:
+[user]
+	name = Harsh Gupta
+	email = gupta.harsh96@gmail.com
+[url "https://"]
+	insteadOf = git://
