@@ -74,3 +74,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+export VMAIL_VIM=gvim
+
+# added by Anaconda 2.0.1 installer
+export PATH="/home/hargup/anaconda/bin:$PATH"
