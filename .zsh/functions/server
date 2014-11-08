@@ -1,0 +1,51 @@
+{
+  function $0_open {
+    if [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]
+    then
+      echo "Server launched at: $1"
+      return
+    fi
+
+    if (( $+commands[open] )) ; then
+      open $1
+    elif (( $+commands[xdg-open])) ; then
+      xdg-open $1
+    else
+      echo "Server launched at: $1"
+    fi
+  }
+
+  local action="${1:-start}"
+  local port="${2:-8000}"
+  local url=http://localhost:$port
+  local pidfile=/tmp/python-simple-http-server-$port.pid
+
+  if [[ $action == 'list' ]]
+  then
+    for i in /tmp/python-simple-http-server-*.pid
+    do
+      local _pid=`cat $i`
+      local _cwd=`pwdx $_pid`
+      echo $i	$_pid	$_cwd
+    done
+    return
+  fi
+
+  if [[ -a $pidfile ]] ; then
+    pid=`cat $pidfile`
+  fi
+
+  if [[ -n $pid ]] && ps -p $pid > /dev/null
+  then
+    if [[ $action == 'stop' ]]
+    then
+      kill $pid
+    fi
+  else
+    python -m SimpleHTTPServer "$port" > /dev/null 2> /dev/null &!
+    echo $! > $pidfile
+    $0_open $url
+  fi
+} always {
+  unfunction -m $0_open
+}
