@@ -1,0 +1,14 @@
+Setup
+=====
+
+    git clone --recursive git://github.com/yeban/vimfiles.git .vim
+    ln -s .vim/vimrc .vimrc
+
+Notes
+=====
+
+Ensure `jshint` is installed (and in PATH) for syntastic to kick in for
+JavaScript files.  (Add instructions to install `jshint`?)
+
+See https://github.com/yeban/awesomerc#readme for instructions on how to setup
+Monaco font.

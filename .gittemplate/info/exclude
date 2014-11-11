@@ -1,0 +1,8 @@
+*.swp
+*.~*~
+*.gem
+tags
+.stash
+Gemfile.lock
+node_modules
+.DS_Store
