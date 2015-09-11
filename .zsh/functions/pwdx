@@ -1,0 +1,6 @@
+if (( $+commands[pwdx] ))
+then
+  command pwdx $@
+else
+  lsof -a -p $1 -d cwd -n | tail -1 | awk '{print $NF}'
+fi

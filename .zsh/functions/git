@@ -1,0 +1,7 @@
+(export GIT_TEMPLATE_DIR=$HOME/.gittemplate
+
+if [[ -z "$1" ]]; then
+  command git status
+else
+  command git $@
+fi)

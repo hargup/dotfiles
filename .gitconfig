@@ -1,0 +1,70 @@
+[user]
+	name  = Anurag Priyam
+	email = anurag08priyam@gmail.com
+[alias]
+	alias        = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || git config --get-regexp \"alias.*\" | colrm 1 6 | sed \"s/[ ]/ = /\" >&2 && exit 0' -"
+	a            = add
+	ap           = add -p
+	;abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
+	b            = branch
+	bm           = branch -m
+	bd           = branch -D
+	c            = commit
+	ca           = commit --amend
+	cal          = commit --amend -C HEAD
+	co           = checkout
+	cp           = cherry-pick
+	d            = diff
+	ds           = diff --staged
+	l            = log -p --stat
+	lg           = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	;log-refs     = log --all --graph --decorate --oneline --simplify-by-decoration --no-merges
+	;new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	r            = reset
+	rh           = reset --hard
+	ri           = rebase -i
+	ra           = rebase --abort
+	rc           = rebase --continue
+	rs           = rebase --skip
+	fixup        = !sh -c 'git commit -m \"fixup! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+	squash       = !sh -c 'git commit -m \"squash! $(git log -1 --format='\\''%s'\\'' $@)\"' -
+[color]
+	ui = auto
+[branch]
+	autosetuprebase = always
+[status]
+	short = true
+	branch = true
+[diff]
+	submodule = log
+[log]
+	date = relative
+[rebase]
+	autosquash = true
+	autostash = true
+[merge]
+	conflictstyle = diff3
+	log = true
+	tool = gvimdiff
+[rerere]
+	enabled
+	autoupdate
+[blame]
+	date = relative
+	blankboundary = true
+	showroot = true
+[grep]
+	lineNumber = true
+[pack]
+	threads = 0
+	usebitmaps = true
+[push]
+	default = current
+[url "https://github.com/"]
+	insteadOf = gh:
+[credential]
+	helper = cache --timeout=259200
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
