@@ -1,8 +1,8 @@
 symlink_to_home =							\
 	if test -e ~/$(file); then					\
-		echo "Warning: ~/$(file) already exists";		\
+		echo "Warning: ~/.$(file) already exists";		\
 	else								\
-		ln -s ~/dotfiles/$(file) ~/$(file);			\
+		ln -s ~/dotfiles/.$(file) ~/$(file);			\
 	fi;
 
 remove_if_symlink =							\
@@ -15,10 +15,8 @@ remove_if_symlink =							\
 	fi;
 
 candidates =	\
-.zshrc .zsh	\
-.vim .vimrc	\
-.gitconfig .gittemplate	\
-.irbrc
+zshrc \
+gitconfig \
 
 all::
 	@$(foreach file,$(candidates),$(symlink_to_home))

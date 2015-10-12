@@ -55,6 +55,8 @@ autosquash = true
 autostash = true
 [diff]
 submodule = log
+	algorithm = histogram
+	tool = vimdiff
 [grep]
 lineNumber = true
 [advice]

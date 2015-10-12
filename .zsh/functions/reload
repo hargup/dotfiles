@@ -1,5 +1,0 @@
-if [[ -z "$1" ]]; then
-  exec $SHELL
-else
-  command reload $@
-fi
