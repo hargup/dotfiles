@@ -13,6 +13,11 @@ ZSH_THEME="juanghurtado"
 alias rm="rm -i"
 alias youtube-dl="youtube-dl --restrict-filename"
 alias xclip="xclip -selection clipboard"
+alias asearch="sudo apt-cache search"
+alias ainstall="sudo apt-get install search"
+alias halt="sudo shutdown -h"
+alias reboot="sudo shutdown -r"
+
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -84,17 +89,12 @@ export VMAIL_VIM=gvim
 export PATH="/home/hargup/anaconda/bin:$PATH"
 # source activate py3.4
 xrandr --output HDMI1 --mode 1920x1080 --left-of LVDS1
+xrandr --output LVDS1 --mode 1366x768 --right-of HDMI1 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/home/hargup/.rubies/ruby-2.1.2/bin:$PATH"
-export PATH="/usr/lib/postgresql/9.3/bin:$PATH"
-eval "$(rbenv init -)"
 export http_proxy="http://10.3.100.207:8080/"
 export https_proxy="https://10.3.100.207:8080/"
 export ftp_proxy="ftp://10.3.100.207:8080/"
 export HTTP_PROXY="http://10.3.100.207:8080/"
 export HTTPS_PROXY="https://10.3.100.207:8080/"
 export FTP_PROXY="ftp://10.3.100.207:8080/"
-PYTHONPATH=$PYTHONPATH:~/pywikipedia/
 export PYTHONPATH
