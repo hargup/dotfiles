@@ -1,0 +1,9 @@
+[submodule ".zsh/bundle/completions"]
+	path = .zsh/bundle/completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".zsh/bundle/autojump"]
+	path = .zsh/bundle/autojump
+	url = https://github.com/sjl/z-zsh.git
+[submodule ".zsh/bundle/dircolors-solarized"]
+	path = .zsh/bundle/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
