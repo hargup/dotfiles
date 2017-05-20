@@ -1,3 +1,8 @@
+# Hooks
+typeset -ga chpwd_functions
+typeset -ga precmd_functions
+typeset -ga preexec_functions
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 ulimit -Sv 5000000
@@ -11,12 +16,17 @@ ulimit -Sv 5000000
 ZSH_THEME="juanghurtado"
 
 alias rm="rm -i"
-alias youtube-dl="youtube-dl --restrict-filename"
+alias youtube-dl="youtube-dl --restrict-filename --add-metadata --xattrs --ignore-errors"
+alias youtube-dl-ea="youtube-dl --extract-audio"
 alias xclip="xclip -selection clipboard"
 alias asearch="sudo apt-cache search"
 alias ainstall="sudo apt-get install search"
 alias halt="sudo shutdown -h"
 alias reboot="sudo shutdown -r"
+alias open="xdg-open"
+alias du='du -ch --apparent-size'
+alias pdftotext="pdftotext -layout"
+alias sudo="sudo -E" # necessary to pass proxy enviornment variable to sudo
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -80,21 +90,35 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+rc=$HOME/.zsh
+if [ -f $rc/*([1]) ]; then
+  for script in $rc/*; do
+    source $script
+  done
+fi
 
+function cd {
+    builtin cd "$@" && ls -F
+}
+
+fpath=($HOME/.zsh/functions $fpath)
+autoload -U $HOME/.zsh/functions/*(:t)
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 export VMAIL_VIM=gvim
 
 # added by Anaconda 2.0.1 installer
 export PATH="/home/hargup/anaconda/bin:$PATH"
-# source activate py3.4
-xrandr --output HDMI1 --mode 1920x1080 --left-of LVDS1
-xrandr --output LVDS1 --mode 1366x768 --right-of HDMI1 
 
-export http_proxy="http://10.3.100.207:8080/"
-export https_proxy="https://10.3.100.207:8080/"
-export ftp_proxy="ftp://10.3.100.207:8080/"
-export HTTP_PROXY="http://10.3.100.207:8080/"
-export HTTPS_PROXY="https://10.3.100.207:8080/"
-export FTP_PROXY="ftp://10.3.100.207:8080/"
-export PYTHONPATH
+# export PATH="/home/hargup/install/bin:$PATH"
+# source activate py3.4
+# xrandr --output HDMI1 --mode 1920x1080 --left-of LVDS1
+# xrandr --output LVDS1 --mode 1366x768 --right-of HDMI1
+
+# source activate py3.4
+unsetproxy
+eval $(thefuck --alias)
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source ~/.rvm/scripts/rvm
